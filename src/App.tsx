@@ -1,7 +1,6 @@
-import './App.css';
 import React from 'react';
 
-export const Hello: React.FC<{ name: String }> = ({name}) => {
+export const Main: React.FC<{ name: String }> = ({name}) => {
     if (!name) {
       name = 'Mundo';
     }
