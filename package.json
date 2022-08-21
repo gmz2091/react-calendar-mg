@@ -5,13 +5,13 @@
   "author": "Magdiel <mgomez2091@gmail.com>",
   "license": "MIT",
   "main": "build/index.js",
-  "types": "build/index.d.ts",
   "scripts": {
     "build": "npx tsc -p .",
     "start": "npx tsc -p . --watch"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",
+    "@types/styled-components": "^5.1.26",
     "react": "^18.2.0",
     "typescript": "^4.7.4"
   },
@@ -19,6 +19,7 @@
     "react": ">=16.11.0"
   },
   "dependencies": {
-    "moment": "^2.29.4"
+    "moment": "^2.29.4",
+    "styled-components": "^5.3.5"
   }
 }

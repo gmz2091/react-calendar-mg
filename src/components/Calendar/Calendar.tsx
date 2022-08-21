@@ -1,7 +1,8 @@
 import React, {  SetStateAction, useEffect, useState } from 'react';
 import moment from 'moment';
-import './styles.css';
+
 import { PropsCalendar } from '../../interface';
+import { Hosteds } from './button.style';
 
 const disabledDatesRef = [
     '2022-08-01',
@@ -69,7 +70,7 @@ export default function Calendar({disabledDates = disabledDatesRef, hoursDisable
 
   return (
 
-    <div className="hosteds">
+    <Hosteds>
       <div className="calendar_main_dates">
         <p>
           {selectedDay !== null ? moment(selectedDay).format('DD/MM/YYYY') : moment().format('DD/MM/YYYY')}
@@ -187,7 +188,7 @@ export default function Calendar({disabledDates = disabledDatesRef, hoursDisable
           ))}
         </div>
       </div>
-    </div>
+    </Hosteds>
 
   );
 }
