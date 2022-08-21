@@ -20,57 +20,26 @@ const disabledDatesRef = [
     '2022-12-13',
   ];
 
-  const hoursDisabledRef = [
-    '07:00',
-    '07:30',
-    '08:00',
-    '08:30',
-    '09:00',
-    '11:00',
-    '11:30',
-    '12:00',
-    '12:30',
-  ];
-
-  const hoursRef = [
-    '08:00',
-    '08:30',
-    '09:00',
-    '09:30',
-    '10:00',
-    '10:30',
-    '11:00',
-    '11:30',
-    '12:00',
-    '12:30',
-    '13:00',
-    '13:30',
-    '14:00',
-    '14:30',
-    '15:00',
-    '15:30',
-  ];
-
-export default function Calendar({disabledDates = disabledDatesRef, hoursDisabled = hoursDisabledRef, hours = hoursRef}: PropsCalendar) {
+export default function Calendar({disabledDates = disabledDatesRef, onChangeDate
+}: PropsCalendar) {
   const [value, onChange] = useState(new Date());
   const [selectedDay, setSelectedDay] = useState<SetStateAction<any>>(null);
   const [showCalendar, setShowCalendar] = useState(false);
-  const [selectedHour, setSelectedHour] = useState<SetStateAction<any>>(null);
 
   const disableWeekends = (date: Date | any) => date.getDay() === 0 || date.getDay() === 6;
 
 
   const disabledDays = disabledDates.map((date: moment.MomentInput) => moment(date).format('DD/MM/YYYY'));
-  const disabledHours = hoursDisabled.map((hour: moment.MomentInput) => moment(hour, 'HH:mm').format('HH:mm'));
 
   useEffect(() => {
-    console.log(selectedHour);
-  }, [selectedHour]);
-
+    if (onChangeDate) {
+      onChangeDate(selectedDay);
+    }
+  }, [selectedDay]);
 
   return (
 
-    <div>
+    <>
       <div className="calendar_main_dates">
         <p>
           {selectedDay !== null ? moment(selectedDay).format('DD/MM/YYYY') : moment().format('DD/MM/YYYY')}
@@ -139,12 +108,13 @@ export default function Calendar({disabledDates = disabledDatesRef, hoursDisable
                             disabledDays.includes(moment(value).date(i + 1).format('DD/MM/YYYY'))
                               ? 'calendar__body__days__day--disabled'
                               : ''
-                          } `}
+                          } ${selectedDay === moment(value).format('YYYY-MM-') + (i + 1)
+                          ? 'calendar__body__days__day--selected' : 'calendar__body__days__day__number'}
+                           `}
                           key={i}
                         >
                           <p
-                            className={`${selectedDay === moment(value).format('YYYY-MM-') + (i + 1)
-                              ? 'calendar__body__days__day--selected' : 'calendar__body__days__day__number'}`}
+                            className={``}
                           >
                             {i + 1}
 
@@ -155,40 +125,7 @@ export default function Calendar({disabledDates = disabledDatesRef, hoursDisable
           </div>
         </div>
       )}
-      <div className="hours">
-        <div className="hours__header">
-          <p>Horas</p>
-        </div>
-        <div className="hours__body">
-          {hours.map((hour: string ) => (
-            <button
-              disabled={disabledHours.includes(moment(hour, 'HH:mm').format('HH:mm'))}
-              type="button"
-              className={`hour__body__hour__number
-              ${selectedHour === moment(hour, 'HH:mm').format('HH:mm') ? 'hours__body__hour--selected' : ''} ${
-                disabledHours.includes(moment(hour, 'HH:mm').format('HH:mm'))
-                  ? 'hours__body__hour--disabled' : ''}`}
-              key={hour}
-              onClick={() => {
-                if (selectedHour !== moment(hour, 'HH:mm').format('HH:mm')) {
-                  setSelectedHour(moment(hour, 'HH:mm').format('HH:mm'));
-                }
-                if (selectedHour === moment(hour, 'HH:mm').format('HH:mm')) {
-                  setSelectedHour(null);
-                }
-              }}
-            >
-              <p className={`hour__hour__number--text ${selectedHour === moment(hour, 'HH:mm').format('HH:mm') ? 'hours__body__hour--selected' : ''} ${
-                disabledHours.includes(moment(hour, 'HH:mm').format('HH:mm'))
-                  ? 'hours__body__hour--disabledT' : ''}`}
-              >
-                {hour}
-              </p>
-            </button>
-          ))}
-        </div>
-      </div>
-    </div>
+    </>
 
   );
 }

@@ -1,55 +1,22 @@
 export interface PropsCalendar {
+    name?: string;
     daysDisabled?: string[];
     disabledDates?: string[] | any | moment.MomentInput[] | undefined;
     hoursDisabled?: string[] | any | moment.MomentInput[] | undefined;
-    hours?: string[] | any | moment.MomentInput[] | undefined;
     days?: string[] | any | moment.MomentInput[] | undefined;
     value?: string | any | moment.MomentInput | undefined;
-    onChange?: (value: string) => void;
+    onChangeDate: ((value: any) => void) | undefined
     onDayClick?: (value: string) => void;
+}
+
+export interface PropsHours {
+    name?: string;
+    hoursDisabled?: string[] | any | moment.MomentInput[] | undefined;
+    hours?: string[] | any | moment.MomentInput[] | undefined;
+    value?: string | any | moment.MomentInput | undefined;
+    onChangeHour: ((value: any) => void) | undefined
     onHourClick?: (value: string) => void;
-    onDayHover?: (value: string) => void;
-    onHourHover?: (value: string) => void;
-    onDayLeave?: (value: string) => void;
-    onHourLeave?: (value: string) => void;
-    onDayFocus?: (value: string) => void;
-    onHourFocus?: (value: string) => void;
-    onDayBlur?: (value: string) => void;
-    onHourBlur?: (value: string) => void;
-    onDayKeyDown?: (value: string) => void;
-    onHourKeyDown?: (value: string) => void;
-    onDayMouseDown?: (value: string) => void;
-    onHourMouseDown?: (value: string) => void;
-    onDayMouseUp?: (value: string) => void;
-    onHourMouseUp?: (value: string) => void;
-    onDayMouseEnter?: (value: string) => void;
-    onHourMouseEnter?: (value: string) => void;
-    onDayMouseLeave?: (value: string) => void;
-    onHourMouseLeave?: (value: string) => void;
-    onDayMouseOver?: (value: string) => void;
-    onHourMouseOver?: (value: string) => void;
-    onDayMouseOut?: (value: string) => void;
-    onHourMouseOut?: (value: string) => void;
-    onDayContextMenu?: (value: string) => void;
-    onHourContextMenu?: (value: string) => void;
-    onDayDoubleClick?: (value: string) => void;
-    onHourDoubleClick?: (value: string) => void;
-    onDayTouchStart?: (value: string) => void;
-    onHourTouchStart?: (value: string) => void;
-    onDayTouchEnd?: (value: string) => void;
-    onHourTouchEnd?: (value: string) => void;
-    onDayTouchMove?: (value: string) => void;
-    onHourTouchMove?: (value: string) => void;
-    onDayTouchCancel?: (value: string) => void;
-    onHourTouchCancel?: (value: string) => void;
-    onDayPointerDown?: (value: string) => void;
-    onHourPointerDown?: (value: string) => void;
-    onDayPointerUp?: (value: string) => void;
-    onHourPointerUp?: (value: string) => void;
-    onDayPointerMove?: (value: string) => void;
-    onHourPointerMove?: (value: string) => void;
-    onDayPointerCancel?: (value: string) => void;
-    onHourPointerCancel?: (value: string) => void;
-    onDayPointerEnter?: (value: string) => void;
-    onHourPointerEnter?: (value: string) => void;
+    openingHour?: string;
+    closingHour?: string;
+    intervalHours?: number;
 }
