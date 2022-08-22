@@ -1,6 +1,6 @@
 {
   "name": "react-calendar-mg",
-  "version": "1.0.14",
+  "version": "2.0.0",
   "private": false,
   "author": "Magdiel <mgomez2091@gmail.com>",
   "license": "MIT",
@@ -43,5 +43,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "repository": "https://github.com/gmz2091/react-calendar-mg.git"
 }
