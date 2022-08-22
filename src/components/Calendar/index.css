@@ -47,7 +47,6 @@
 
 .calendar {
     width: 100%;
-    border: 1px solid rgb(235, 133, 24);
     border-radius: 5px;
     padding: 4px 8px;
     margin-bottom: 10px;
@@ -149,7 +148,7 @@
 
 .calendar__body__days__day--disabled {
     background-color: #f2f2f2;
-    color: #a48925c2;
+    color: #706876 !important;
     cursor: not-allowed;
 }
 
@@ -159,7 +158,6 @@
 }
 
 .calendar_main_dates {
-    border: 1px solid rgb(235, 133, 24);
     border-radius: 5px;
     padding: 4px 8px;
     display: flex;
@@ -218,7 +216,6 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    color: aliceblue;
 }
 
 .hour__body__hour__number--text {

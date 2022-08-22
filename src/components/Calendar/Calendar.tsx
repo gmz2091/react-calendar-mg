@@ -20,7 +20,7 @@ const disabledDatesRef = [
     '2022-12-13',
   ];
 
-export default function Calendar({disabledDates = disabledDatesRef, onChangeDate
+export default function Calendar({disabledDates = disabledDatesRef, onChangeDate, color = "black", borderColor = 'rgb(19 152 211)'
 }: PropsCalendar) {
   const [value, onChange] = useState(new Date());
   const [selectedDay, setSelectedDay] = useState<SetStateAction<any>>(null);
@@ -40,7 +40,7 @@ export default function Calendar({disabledDates = disabledDatesRef, onChangeDate
   return (
 
     <>
-      <div className="calendar_main_dates">
+      <div className="calendar_main_dates" style={{ border: `1px solid ${borderColor}` }}>
         <p>
           {selectedDay !== null ? moment(selectedDay).format('DD/MM/YYYY') : moment().format('DD/MM/YYYY')}
         </p>
@@ -52,7 +52,7 @@ export default function Calendar({disabledDates = disabledDatesRef, onChangeDate
       </div>
 
       {showCalendar && (
-        <div className="calendar">
+        <div className="calendar" style={{ border: `1px solid ${borderColor}` }}>
           <div className="calendar__header">
             <button type="button" className="calendar__button" onClick={() => onChange(moment(value).subtract(1, 'month').toDate())}>
               <p className="calendar__button--text">
@@ -100,6 +100,7 @@ export default function Calendar({disabledDates = disabledDatesRef, onChangeDate
                               setSelectedDay(null);
                             }
                           }}
+                          style={{ color: color}}
                           className={`calendar__body__days__day ${
                             moment(value).date(i + 1).format('DD/MM/YYYY') === moment().format('DD/MM/YYYY')
                               ? 'calendar__body__days__day--today'

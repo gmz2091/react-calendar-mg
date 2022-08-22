@@ -15,7 +15,7 @@ import { PropsHours } from '../../interface';
 
 
 export default function Hours({ hoursDisabled = hoursDisabledRef,
-   openingHour = '08:00', closingHour = '14:30', intervalHours =  10, onChangeHour}: PropsHours) {
+   openingHour = '08:00', closingHour = '14:30', intervalHours =  10, onChangeHour, color = "black"}: PropsHours) {
   const [selectedHour, setSelectedHour] = useState<SetStateAction<any>>(null);
 
 
@@ -50,6 +50,7 @@ export default function Hours({ hoursDisabled = hoursDisabledRef,
             <button
               disabled={disabledHours.includes(moment(hour, 'HH:mm').format('HH:mm'))}
               type="button"
+              style={{ color: color }}
               className={`hour__body__hour__number
               ${selectedHour === moment(hour, 'HH:mm').format('HH:mm') ? 'hours__body__hour--selected' : ''} ${
                 disabledHours.includes(moment(hour, 'HH:mm').format('HH:mm'))

@@ -1,5 +1,7 @@
 export interface PropsCalendar {
     name?: string;
+    color?: string;
+    borderColor?: string;
     daysDisabled?: string[];
     disabledDates?: string[] | any | moment.MomentInput[] | undefined;
     hoursDisabled?: string[] | any | moment.MomentInput[] | undefined;
@@ -11,6 +13,7 @@ export interface PropsCalendar {
 
 export interface PropsHours {
     name?: string;
+    color?: string;
     hoursDisabled?: string[] | any | moment.MomentInput[] | undefined;
     hours?: string[] | any | moment.MomentInput[] | undefined;
     value?: string | any | moment.MomentInput | undefined;
